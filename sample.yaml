@@ -9,7 +9,7 @@ Resources:
     Properties:
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
-      CodeUri: ./LambdaCode
+      CodeUri: .
       Description: >-
         An Amazon S3 trigger that retrieves metadata for the object that has
         been updated.
@@ -22,7 +22,7 @@ Resources:
       FunctionName: LFX2
       Handler: lambda_function.lambda_handler
       Runtime: python3.8
-      CodeUri: ./LambdaCode
+      CodeUri: .
       Description: ''
       MemorySize: 128
       Timeout: 3
