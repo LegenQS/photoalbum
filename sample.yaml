@@ -37,12 +37,3 @@ Resources:
       MemorySize: 128
       Timeout: 3
       Role: 'arn:aws:iam::359634618028:role/service-role/search-photos-role-uvdm8tzx'
-      Events:
-        getAZsAPI:
-          Type: Api
-          Properties:
-            Path: /getazs
-            Method: get
-      Environment:
-        Variables:
-          REGION: us-east-1
