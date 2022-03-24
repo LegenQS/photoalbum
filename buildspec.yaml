@@ -1,12 +1,10 @@
 version: 0.2
 phases:
   install:
-    runtime-versions:
-        python: 3.8
-  build:
     commands:
       - sam package --template-file sample.yaml --s3-bucket coms6998hw2-b2 --output-template-file packaged-template.yml
 artifacts:
   files:
+  type: zip
     - packaged-template.yml
     - sample.yaml
