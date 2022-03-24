@@ -7,7 +7,6 @@ Resources:
   indexphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: LFX1
       Handler: lambda_function.lambda_handler
       Runtime: python3.7
       CodeUri: ./LambdaCode
@@ -17,7 +16,6 @@ Resources:
       MemorySize: 128
       Timeout: 10
       Role: 'arn:aws:iam::359634618028:role/service-role/index-photos-role'
-      
   searchphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
@@ -29,3 +27,12 @@ Resources:
       MemorySize: 128
       Timeout: 3
       Role: 'arn:aws:iam::359634618028:role/service-role/search-photos-role-uvdm8tzx'
+      Events:
+        getAZsAPI:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: GET
+      Environment:
+        Variables:
+          REGION: us-east-1
