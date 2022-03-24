@@ -4,6 +4,7 @@ phases:
     commands:
       - sam package --template-file sample.yaml --s3-bucket coms6998hw2-b2 --output-template-file packaged-template.yml
 artifacts:
+  type: zip
   files:
     - packaged-template.yml
     - sample.yaml
