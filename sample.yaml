@@ -17,15 +17,7 @@ Resources:
       MemorySize: 128
       Timeout: 10
       Role: 'arn:aws:iam::359634618028:role/service-role/index-photos-role'
-      Events:
-        getAZsAPI:
-          Type: Api
-          Properties:
-            Path: /getazs
-            Method: get
-      Environment:
-        Variables:
-          REGION: us-east-1
+      
   searchphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
