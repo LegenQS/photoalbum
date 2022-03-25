@@ -82,7 +82,11 @@ def read_from_lex(message):
     
     return result
 
-def delete(key='BabyGoat_ROW9287280510_1920x1200.jpg'):
+def delete(key=''):
+    # delete the object in ES with key name
+    # param:
+    # key: string type with subfix .png or .jpeg
+    
     region = 'us-east-1' 
     service = 'es'
     credentials = boto3.Session().get_credentials()
