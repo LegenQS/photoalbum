@@ -17,7 +17,7 @@ client = boto3.client('lex-runtime')
 def lambda_handler(event, context):
     print("Lambda function search called.")
     print(event)
-    
+
     try:
         label_origin = event['queryStringParameters']['q']
     except:
@@ -29,12 +29,15 @@ def lambda_handler(event, context):
     labels = read_from_lex(label_origin)
     
     print(labels)
-    # test case
-    # labels = ['city'] 
+    # # test case
+    # labels = ['building'] 
+    
     photo_path = {}
     photo_path = ES_match(labels)
-    # print(json.dumps(photo_path, indent=2))
-
+    
+    # delete the object in elastic search with key name
+    # delete()
+    
     print(photo_path)
     # return result to frontend
     return{
@@ -83,6 +86,34 @@ def read_from_lex(message):
     
     return result
 
+def delete(key='BabyGoat_ROW9287280510_1920x1200.jpg'):
+    region = 'us-east-1' 
+    service = 'es'
+    credentials = boto3.Session().get_credentials()
+    awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, region, service, session_token=credentials.token)
+    
+    # OpenSearch domain endpoint
+    host = 'https://search-photos-gcpis6vjw5ug7kqim6bfijfera.us-east-1.es.amazonaws.com/' 
+    index = 'photos'
+    url = host + index + '/_delete_by_query'
+
+    # Elasticsearch 6.x requires an explicit Content-Type header
+    headers = {"Content-Type": "application/json"}
+    
+    query = {
+        "query": {
+            "match": {
+                "objectKey": key
+            }
+        }
+    }
+    
+    # Make the signed HTTP request
+    r = requests.post(url, auth=awsauth, headers=headers, data=json.dumps(query))
+    
+    print(r)
+    return 
+    
 def ES_match(labels):
     """
         using elastic search to search 'id' with given record number and message
