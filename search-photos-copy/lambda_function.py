@@ -8,9 +8,6 @@ import inflect
 
 s3 = boto3.client('s3')
 
-
-import json
-import boto3
 # Define the client to interact with Lex
 client = boto3.client('lex-runtime')
 
