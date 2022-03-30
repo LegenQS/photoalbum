@@ -5,6 +5,7 @@ import datetime
 from requests_aws4auth import AWS4Auth
 import requests
 
+# function starts
 print('Loading function')
 
 s3 = boto3.client('s3')
