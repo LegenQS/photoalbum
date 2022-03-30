@@ -6,6 +6,7 @@ import requests
 from requests_aws4auth import AWS4Auth
 import inflect
 
+# initialize client
 s3 = boto3.client('s3')
 # Define the client to interact with Lex
 client = boto3.client('lex-runtime')
