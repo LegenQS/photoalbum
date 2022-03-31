@@ -7,6 +7,7 @@ from requests_aws4auth import AWS4Auth
 import inflect
 
 # initialize client
+print("here is the change")
 s3 = boto3.client('s3')
 # Define the client to interact with Lex
 client = boto3.client('lex-runtime')
