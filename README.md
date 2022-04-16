@@ -1,2 +1,2 @@
 # photoalbum
-backend code, frontend code please move to https://github.com/peteryoungy/AI-Photo-Search-Web
+Backend code, for frontend code reference please move to https://github.com/peteryoungy/AI-Photo-Search-Web
